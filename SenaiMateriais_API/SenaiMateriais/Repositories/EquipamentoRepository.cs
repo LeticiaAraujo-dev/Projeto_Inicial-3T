@@ -1,4 +1,5 @@
-﻿using SenaiMateriais.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using SenaiMateriais.Contexts;
 using SenaiMateriais.Domains;
 using SenaiMateriais.Interfaces;
 using System;
@@ -54,27 +55,53 @@ namespace SenaiMateriais.Repositories
 
         public void Cadastrar(Equipamento novoEquipamento)
         {
-            throw new NotImplementedException();
+            ctx.Equipamentos.Add(novoEquipamento);
+
+            ctx.SaveChanges();
         }
 
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            ctx.Equipamentos.Remove(BuscarPorId(id));
+
+            ctx.SaveChanges();
         }
 
         public List<Equipamento> Listar()
         {
-            throw new NotImplementedException();
+            return ctx.Equipamentos
+                .Include(p => p.IdTipoEquipamentoNavigation)
+                .ToList();
         }
 
         public List<Equipamento> ListarSala(int id)
         {
-            throw new NotImplementedException();
+            return ctx.Equipamentos
+                .Include(te => te.IdTipoEquipamentoNavigation)
+                .Include(s => s.IdSalaNavigation)
+                .Where(s => s.IdSala == id)
+                .ToList();
         }
 
-        public void UsarMaterial(int id, Equipamento statusNovo)
+        public void UsarMaterial(int id, Equipamento equipamentoAtualizado)
         {
-            throw new NotImplementedException();
+            Equipamento equipamentoBuscado = ctx.Equipamentos.Find(id);
+
+            if (equipamentoBuscado.Statu == true)
+            {
+                equipamentoAtualizado.Statu = false;
+                equipamentoBuscado.Statu = equipamentoAtualizado.Statu;
+
+            }
+            if (equipamentoBuscado.Statu == false)
+            {
+                equipamentoAtualizado.Statu = true;
+                equipamentoBuscado.Statu = equipamentoAtualizado.Statu;
+            }
+
+            ctx.Equipamentos.Update(equipamentoBuscado);
+
+            ctx.SaveChanges();
         }
     }
 }

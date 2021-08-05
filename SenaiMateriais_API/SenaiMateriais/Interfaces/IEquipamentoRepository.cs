@@ -20,7 +20,7 @@ namespace SenaiMateriais.Interfaces
 
         List<Equipamento> ListarSala(int id);
 
-        void UsarMaterial (int id, Equipamento statusNovo);
+        void UsarMaterial (int id, Equipamento equipamentoAtualizado);
 
     }
 }
