@@ -55,6 +55,11 @@ namespace SenaiMateriais.Repositories
 
         public void Cadastrar(Equipamento novoEquipamento)
         {
+            if (novoEquipamento.Statu == false)
+            {
+                novoEquipamento.Statu = true;
+            }
+
             ctx.Equipamentos.Add(novoEquipamento);
 
             ctx.SaveChanges();
@@ -83,20 +88,17 @@ namespace SenaiMateriais.Repositories
                 .ToList();
         }
 
-        public void UsarMaterial(int id, Equipamento equipamentoAtualizado)
+        public void UsarMaterial(int id)
         {
             Equipamento equipamentoBuscado = ctx.Equipamentos.Find(id);
 
             if (equipamentoBuscado.Statu == true)
             {
-                equipamentoAtualizado.Statu = false;
-                equipamentoBuscado.Statu = equipamentoAtualizado.Statu;
-
+                equipamentoBuscado.Statu = false;
             }
-            if (equipamentoBuscado.Statu == false)
+            else
             {
-                equipamentoAtualizado.Statu = true;
-                equipamentoBuscado.Statu = equipamentoAtualizado.Statu;
+                equipamentoBuscado.Statu = true;
             }
 
             ctx.Equipamentos.Update(equipamentoBuscado);

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SenaiMateriais.Domains;
 using SenaiMateriais.Interfaces;
 using SenaiMateriais.Repositories;
@@ -22,6 +23,7 @@ namespace SenaiMateriais.Controllers
             _salaRepository = new SalaRepository();
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
@@ -35,6 +37,7 @@ namespace SenaiMateriais.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -48,6 +51,7 @@ namespace SenaiMateriais.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Post(Sala novaSala)
         {
@@ -63,6 +67,8 @@ namespace SenaiMateriais.Controllers
             }
         }
 
+
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Sala salaAtualizada)
         {
@@ -78,6 +84,8 @@ namespace SenaiMateriais.Controllers
             }
         }
 
+
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
