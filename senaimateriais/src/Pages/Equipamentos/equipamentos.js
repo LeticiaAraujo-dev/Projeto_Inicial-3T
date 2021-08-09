@@ -357,7 +357,7 @@ export default function Equipamentos()
 
             <section className="cadastro-equip">
                 <form onSubmit={cadastrarEquipamentos} className="cadastro-equip-campo">
-                    <h2>Cadastro de salas</h2>
+                    <h2>{idEdit === 0 ? 'Cadastro de equipamento' : 'Atualização de equipamento'}</h2>
 
                     <div className="campo-equip">
 
