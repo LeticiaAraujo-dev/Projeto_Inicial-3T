@@ -1,4 +1,54 @@
-# Projeto_Inicial-3T
+# Sobre a equipe
+
+  Matheus David :
+  
+    - Responsavel pelo front-end e P.O da equipe
+    - GitHub username: MatheusDavidDev
+    
+  Letícia Araujo :
+  
+    - Responsavel pelo back-end e Scrum Master da equipe
+    - GitHub username: LeticiaAraujo-dev
+    
+  Leandro Rangel :
+  
+    - Responsavel pelo back-end relacionado ao login
+    - GitHub username: leandroairzone
+ 
+
+# Tecnologias utilizadas
+
+- HTML
+- CSS
+- JS
+- NodeJS
+- Figma
+- C#
+- Git
+- SQL Server
+- Visual Studio Code
+- Visual Studio 2019
+
+
+# Configurações para executar a aplicação
+
+1. Clonar o código na maquina desejada atrávez do git 
+
+2. Abrir o SQL Server da maquina
+
+3. Executar o DDL e DML encontrado na pasta "back-end/SenaiMateriais_SQL/" no SQL Server
+
+4. Abrir a solução da API encontrada em "back-end/SenaiMateriais_API/SenaiMateriais/"
+
+5. Alterar o SMContext para o nome e senha da maquina usada
+
+6. Excutar a API
+
+7. Instalar o pacode nodeJS na pasta "front-end/SenaiMateriais_nodeJS/senaimateriais/" atravéz do comando "npm install" no windows shell
+
+8. Excutar o nodeJS atrávez do comando "npm start"
+
+# Instruções dadas do projeto 
 Projeto da primeira semana 3º de Desenvolvimento de Sistemas
 
 Criar um Sistema para gerenciar o patrimônio de uma escola.(backend, web e/ou mobile)
