@@ -22,7 +22,7 @@ namespace SenaiMateriais.Controllers
             _equipamentoRepository = new EquipamentoRepository();
         }
 
-        [Authorize]
+        
         [HttpGet]
         public IActionResult Get()
         {
@@ -50,7 +50,7 @@ namespace SenaiMateriais.Controllers
             }
         }
 
-        [Authorize]
+       
         [HttpPost]
         public IActionResult Post(Equipamento novoEquipamento)
         {
@@ -66,7 +66,7 @@ namespace SenaiMateriais.Controllers
             }
         }
 
-        [Authorize]
+        
         [HttpPut("{id}")]
         public IActionResult Put(int id, Equipamento equipamentoAtualizado)
         {
@@ -82,7 +82,7 @@ namespace SenaiMateriais.Controllers
             }
         }
 
-        [Authorize]
+        
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -98,7 +98,7 @@ namespace SenaiMateriais.Controllers
             }
         }
 
-        [Authorize]
+        
         [HttpPatch("usar/{id}")]
         public IActionResult Patch(int id)
         {
@@ -114,7 +114,7 @@ namespace SenaiMateriais.Controllers
             }
         }
 
-        [Authorize]
+        
         [HttpGet("minhas/{id}")]
         public IActionResult GetMy(int id)
         {
