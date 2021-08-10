@@ -5,8 +5,11 @@ import axios from "axios";
 import { Card } from 'react-bootstrap';
 import { useHistory } from "react-router";
 
-import '../../Assents/styles/Equipamento.css'
-import { Button } from "bootstrap";
+import '../../Assents/styles/Equipamento.css';
+import '../../Assents/styles/Home.css'
+
+import Header from "../../components/header/header";
+import Rodape from "../../components/rodape/rodape";
 
 export default function Equipamentos()
 {
@@ -22,9 +25,9 @@ export default function Equipamentos()
 
     // CADASTRO
     
-    const [ nome , setNome ] = useState( '' );
+    const [ nome , setNome ] = useState(  );
 
-    const [ andar , setAndar ] = useState( '' );
+    const [ andar , setAndar ] = useState(  );
 
     const [ metragem , setMetragem ] = useState(  );
 
@@ -48,7 +51,12 @@ export default function Equipamentos()
 
 
     function bucarUnicaSala(){
-        axios(`http://localhost:5000/api/sala/${id}`)
+        axios(`http://localhost:5000/api/sala/${id}`, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+            
+        })
 
         .then(resposta => {
             if (resposta.status === 200) {
@@ -62,7 +70,11 @@ export default function Equipamentos()
     };
 
     function buscaEquepamentos(){
-        axios(`http://localhost:5000/api/Equipamento/minhas/${id}`)
+        axios(`http://localhost:5000/api/Equipamento/minhas/${id}`, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
 
         .then(resposta => {
             if (resposta.status === 200) {
@@ -76,13 +88,18 @@ export default function Equipamentos()
     }
 
     function buscaTiposEquipamentos(){
-        axios(`http://localhost:5000/api/TipoEquipamento`)
+        axios(`http://localhost:5000/api/TipoEquipamento`, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
 
         .then(resposta => {
             if (resposta.status === 200) {
                 let dados = resposta.data
                 setListaTipoEqui(dados)
                 console.log(dados)
+                console.log('oi tudo bem')
             };
         })
 
@@ -95,13 +112,17 @@ export default function Equipamentos()
         setIsLoading( true );
 
         axios.put(`http://localhost:5000/api/sala/${id}`, {
-
             nome: nome,
             andar: andar,
             metragem: metragem
+        }, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
         })
         .then(resposta => {
             if (resposta.status === 204) {
+                limpaStates();
                 bucarUnicaSala();
                 setIsLoading( false );
                 console.log('Sala editada')
@@ -116,7 +137,11 @@ export default function Equipamentos()
 
         setIsLoading( true );
 
-        axios.delete(`http://localhost:5000/api/sala/${id}`)
+        axios.delete(`http://localhost:5000/api/sala/${id}`, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
 
         .then(resposta => {
             if (resposta.status === 204) {
@@ -134,7 +159,11 @@ export default function Equipamentos()
 
         setIsLoading( true );
 
-        axios.delete(`http://localhost:5000/api/Equipamento/${equip}`)
+        axios.delete(`http://localhost:5000/api/Equipamento/${equip}`, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
 
         .then(resposta => {
             if (resposta.status === 204) {
@@ -170,6 +199,10 @@ export default function Equipamentos()
             descricao: desc,
             numeroPatrimonio: patrimo,
             numeroSerie: serie
+        }, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
         })
 
         .then(resposta => {
@@ -191,6 +224,10 @@ export default function Equipamentos()
                 descricao: desc,
                 numeroPatrimonio: patrimo,
                 numeroSerie: serie
+            }, {
+                headers : {
+                    'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+                }
             })
             .then(resposta => {
                 if (resposta.status === 204) {
@@ -219,7 +256,11 @@ export default function Equipamentos()
     function mudaStatus(equip){
         setIsLoading( true )
 
-        axios.patch(`http://localhost:5000/api/Equipamento/usar/${equip}`)
+        axios.patch(`http://localhost:5000/api/Equipamento/usar/${equip}`, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
 
         .then(resposta => {
             if (resposta.status === 204) {
@@ -241,31 +282,38 @@ export default function Equipamentos()
         setDesc( '' )
         setPatrimo( '' )
         setSerie( '' )
+
+        setNome( '' )
+        setAndar( '' )
+        setMetragem( '' )
     }
 
 
     return(
+
+        
         <main>
+            <Header/>
             <section className="sala">
                 <div className="sala-container">
                     <div className="sala-conteudo">
 
                         <Card key={minhaSala.idSala} className="sala-vizual">
                             <Card.Body style={{ width: '17vw', height: '5vh'}}>
-                                <Card.Title style={{ fontSize:'26px', fontWeight: '600', textAlign: 'start'}}>{minhaSala.nome}</Card.Title>
+                                <Card.Title style={{ fontSize:'26px', fontFamily: 'Georama', fontWeight: '300', textAlign: 'start'}}>{minhaSala.nome}</Card.Title>
                             </Card.Body>
                             
                             <Card.Body className="sala-vizual-container" style={{  height: '1vh' }}>
-                                <Card.Text>{minhaSala.andar}° Andar</Card.Text>
-                                <Card.Text>{minhaSala.metragem}m²</Card.Text>
+                                <Card.Text style={{ fontFamily: 'Poppins', fontWeight: '200' }}>{minhaSala.andar}° Andar</Card.Text>
+                                <Card.Text style={{ fontFamily: 'Poppins', fontWeight: '200' }}>{minhaSala.metragem}m²</Card.Text>
                             </Card.Body>
                         </Card>
                     
                         <form onSubmit={atualizaSala} className="formulario">
                             <div className="sala-botao">
-                                <button type="submit" className="editar">Editar</button>
+                                <button style={{ fontFamily: 'Poppins', fontWeight: '400', fontSize: '23px' }} type="submit" className="editar">Editar</button>
 
-                                <button onClick={(sala) => excluirSala(sala)} className="excluir">Excluir</button>
+                                <button style={{ fontFamily: 'Poppins', fontWeight: '400', fontSize: '23px' }}  onClick={(sala) => excluirSala(sala)} className="excluir">Excluir</button>
                             </div>
 
                             <div className="sala-input">
@@ -303,7 +351,7 @@ export default function Equipamentos()
                     {
                         meusEquipamentos.map( (equip) => {
                             return(
-                                <div key={equip.idEquipament} className="card-equipamento">
+                                <div key={equip.idEquipamento} className="card-equipamento">
                                     <div className="equipamento">
                                         <div className="nome">
                                             <h2>{equip.marca}</h2>
@@ -325,12 +373,12 @@ export default function Equipamentos()
 
                                             {
                                                 equip.statu === true &&
-                                                <button className="status-botao" onClick={() => mudaStatus(equip.idEquipamento)}>Ativo</button>
+                                                <button style={{ fontFamily: 'Poppins', fontWeight: '500', fontSize: '26px' }} className="status-botao" onClick={() => mudaStatus(equip.idEquipamento)}>Ativo</button>
                                             }
 
                                             {
                                                 equip.statu === false &&
-                                                <button className="status-botao"  onClick={() => mudaStatus(equip.idEquipamento)} style={{ backgroundColor: "#FF0000" }}
+                                                <button style={{ fontFamily: 'Poppins', fontWeight: '500', fontSize: '26px' }} className="status-botao"  onClick={() => mudaStatus(equip.idEquipamento)} style={{ backgroundColor: "#FF0000" }}
                                                 >Inativo</button>
                                             }
                                         
@@ -339,11 +387,11 @@ export default function Equipamentos()
                                     </div>
 
                                     <div className="botao-equip">
-                                        <button onClick={() => buscaIdEqupamentoEdit(equip)} className="editar eqp">Editar</button>
+                                        <button style={{ fontFamily: 'Poppins', fontWeight: '400', fontSize: '22px' }} onClick={() => buscaIdEqupamentoEdit(equip)} className="editar eqp">Editar</button>
 
 
                                         <button 
-                                        className="excluir eqp"
+                                        className="excluir eqp" style={{ fontFamily: 'Poppins', fontWeight: '400', fontSize: '22px' }}
                                         onClick={() => excluirEquipamento(equip.idEquipamento)}
                                         >Excluir</button>
                                     </div>
@@ -421,11 +469,11 @@ export default function Equipamentos()
 
                     </div>
 
-                    <button type='submit' className="botao-cadastro">{idEdit === 0 ? 'Cadastrar' : 'Atualizar'}</button>
+                    <button style={{ fontWeight: '400', fontSize: '28px' }} type='submit' className="botao-cadastro">{idEdit === 0 ? 'Cadastrar' : 'Atualizar'}</button>
                 </form>
             </section>
 
-
+            <Rodape />
         </main>
     )
 }

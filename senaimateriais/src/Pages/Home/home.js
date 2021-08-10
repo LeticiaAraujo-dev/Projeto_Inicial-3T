@@ -8,8 +8,11 @@ import { Link } from 'react-router-dom';
 import '../../Assents/styles/Home.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import logoHeader from '../../Assents/img/LogoHeader.png';
+//import logoHeader from '../../Assents/img/LogoHeader.png';
 import caixa from '../../Assents/img/archive1.png';
+
+import Header from "../../components/header/header"
+import Rodape from "../../components/rodape/rodape"
 
 export default function Home()
 {
@@ -30,7 +33,11 @@ export default function Home()
     function buscaSala(){
         setIsLoading( true );
 
-        axios('http://localhost:5000/api/sala')
+        axios('http://localhost:5000/api/sala', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
 
         .then(resposta => {
             if (resposta.status === 200) {
@@ -56,6 +63,10 @@ export default function Home()
             nome: nome,
             andar: andar,
             metragem: metragem
+        }, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
         })
         .then(resposta => {
             if (resposta.status === 201) {
@@ -79,7 +90,7 @@ export default function Home()
 
     return(
         <>
-        <header>
+        {/*<header>
             <section className="headers-menus">
                 <img src={logoHeader} alt="Logo do senai"/>
 
@@ -90,7 +101,10 @@ export default function Home()
                     </nav>
                 </div>
             </section>
-        </header>
+        </header>*/}
+
+        <Header/>
+
         <main>
 
             <section className="banner">
@@ -114,19 +128,20 @@ export default function Home()
                                             <Card.Img variant="center" src={caixa} style={{ width: '50px', height: '50px' }} />
                                         </Card.Header>
 
-                                        <Card.Body style={{width: '300px', height: '60px'}}> 
+                                        <Card.Body className="cards" style={{width: '300px', height: '60px' }}> 
 
-                                            <Card.Title style={{fontSize: '30px' }}>{sala.nome}</Card.Title>
+                                            <Card.Title style={{fontSize: '30px', fontFamily: 'Poppins', fontWeight: '200' }}>{sala.nome}</Card.Title>
                                         </Card.Body>
 
                                         <Card.Body style={{ width: '300px', height: '40px', display: 'flex', justifyContent: 'space-between', fontSize: '25px'}}>
-                                            <Card.Text>{sala.andar} Andar</Card.Text>
-                                            <Card.Text>{sala.metragem}m²</Card.Text>
+                                            <Card.Text style={{ fontFamily: 'Poppins', fontWeight: '300' }} >{sala.andar} Andar</Card.Text>
+                                            <Card.Text style={{ fontFamily: 'Poppins', fontWeight: '300' }} >{sala.metragem}m²</Card.Text>
                                         </Card.Body>
 
                                         <ListGroup>
                                             <Card.Body className="text-center">
-                                                <Button 
+                                                <Button
+                                                style={{ fontFamily: 'Poppins', fontWeight: '200' }}
                                                 variant="secondary"
                                                 onClick={() => history.push(`/equipamentos/${sala.idSala}`)}
                                                 >
@@ -185,16 +200,18 @@ export default function Home()
 
                     {
                         isLoading === false && 
-                        <button type="submit" className="botao-cadastro">Cadastrar</button>
+                        <button type="submit" className="botao-cadastro" style={{ fontWeight: '400', fontSize: '28px' }} >Cadastrar</button>
                     }
 
                     {
                         isLoading === true &&
-                        <button type="submit" disabled className="botao-cadastro" style={{ backgroundColor: '#000000', border: 'none'}}>Cadastrando....</button>
+                        <button type="submit" disabled className="botao-cadastro" style={{ backgroundColor: '#000000', border: 'none', fontWeight: '400', fontSize: '28px'}}>Cadastrando....</button>
                     }
                 </form>
             </section>
         </main>
+
+        <Rodape/>
         </>
         
     )

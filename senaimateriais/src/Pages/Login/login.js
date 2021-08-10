@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import axios from 'axios';
+import { parseJwt } from '../../Services/auth';
 
 // SERVICES
 import { auth } from '../../Services/auth';
@@ -38,7 +39,8 @@ export default function Login()
             })
             .then((res) => {
                 if (res.status === 200) {
-                    localStorage.setItem('token', res.data.token);
+                    localStorage.setItem('usuario-login', res.data.token);
+                    console.log(parseJwt(res.data.token).jti)
 
                     setIsLoading(false);
 
@@ -68,7 +70,7 @@ export default function Login()
                         <form onSubmit={fazerlogin} className="login-campos-container">
                             <img src={logo} alt="Imagem da logo do senai"/>
 
-                            <span style={{color: 'red'}}>{errorMensa}</span>
+                            <span style={{color: 'red', fontSize: '20px'}}>{errorMensa}</span>
 
                             <div className="email">
                                 <input type="text" 
@@ -96,6 +98,7 @@ export default function Login()
                                 isLoading === (false) &&
                                 <button className="botao-login"
                                 type="submit"
+                                style={{ fontWeight: '400', fontSize: '28px' }}
                                 >Login</button>
                             }
                             {/*<button className="botao-login">Login</button>*/}

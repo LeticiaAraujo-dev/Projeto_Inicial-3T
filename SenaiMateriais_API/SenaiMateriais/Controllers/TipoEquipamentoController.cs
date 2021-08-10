@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SenaiMateriais.Interfaces;
 using SenaiMateriais.Repositories;
@@ -21,6 +22,7 @@ namespace SenaiMateriais.Controllers
             _tipoEquipamentoRepository = new TipoEquipamentoRepository();
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {

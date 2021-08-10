@@ -1,7 +1,7 @@
-export const usuariAutenti = () => localStorage.getItem(/* MUDAR */) !== null
+export const usuariAutenti = () => localStorage.getItem('usuario-login') !== null
 
 export const parseJwt = () => {
-    let base64 = localStorage.getItem(/* MUDAR */).split('.')[1];
+    let base64 = localStorage.getItem('usuario-login').split('.')[1];
 
     return JSON.parse(window.atob(base64))
 }

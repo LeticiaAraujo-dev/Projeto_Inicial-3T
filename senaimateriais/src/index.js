@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { parseJwt, usuariAutenti } from './Services/auth';
 
 import './index.css';
 
@@ -9,15 +10,24 @@ import Login from './Pages/Login/login';
 import Home from './Pages/Home/home';
 import Equipamentos from './Pages/Equipamentos/equipamentos';
 
+const PermissaoLogado = ({ component : Component }) => (
+  <Route
+    render = { id =>
+      usuariAutenti() && parseJwt().jti !== "0" ?
 
+      <Component {...id} /> :
+      <Redirect to = '/login' />
+    }
+  />
+);
 
 const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route exact path="/equipamentos/:id" component={Equipamentos} />
+        <Route exact path="/login" component={Login} />
+        <PermissaoLogado exact path="/" component={Home} />
+        <Route path="/equipamentos/:id" component={Equipamentos} />
         <Redirect to = "/" />
       </Switch>
     </div>

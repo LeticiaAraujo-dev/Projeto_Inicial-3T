@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Georama:wght@100;300;400;700&family=Poppins:wght@300;400;500&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     font-family: 'Calibri';
+
 }
 
 
@@ -12,6 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .sala-container{
@@ -42,12 +46,14 @@
     align-items: center;
     justify-content: space-between;
     
+    box-shadow: 3px 2px 3px 0px #6e6e6e;
     
 }
 
 .sala-vizual h2{
     font-size: 30px;
     font-weight: 600;
+    
     
 }
 
@@ -95,12 +101,15 @@
     border-radius: 10px;
     border: none;
 
-    box-shadow: 3px 2px 5px 0px #E3E3E3;
+    box-shadow: 4px 3px 3px 0px #E3E3E3;
     
 }
 
 .editar{
     background-color: black;
+    font-weight: 400;
+    font-size: 28px;
+    
 }
 
 .editar:hover{
@@ -129,7 +138,7 @@
 
 .sala-input input{
     width: 16vw;
-    height: 3vh;
+    height: 3.2vh;
 
     
     border: 1px solid #686868;
@@ -139,7 +148,7 @@
 
     font-size: 0.9em;
 
-    box-shadow: 3px 2px 5px 0px #E3E3E3;
+    box-shadow: 3px 3px 3px 0px #E3E3E3;
 }
 
 .equipamentos{
@@ -178,6 +187,8 @@
     border: 1px solid #a1a1a1 ;
     display: flex;
     align-items: center;
+
+    box-shadow: 3px 2px 3px 0px #6e6e6e;
 }
 
 .nome{
@@ -186,6 +197,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.nome h2{
+    font-family: 'Georama', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
 }
 
 .dados-equipamento{
@@ -210,6 +227,8 @@
 
 .equi-dados1 p{
     font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
 }
 
 .equi-dados2{
@@ -223,6 +242,8 @@
 .equi-dados2 p{
     font-size: 20px;
     margin-left: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
 }
 
 .div-botao{
@@ -242,8 +263,11 @@
     border: none;
     border-radius: 10px;
 
+    font-family: 'Poppins', sans-serif;
     font-size: 25px;
     font-weight: 600;
+
+    box-shadow: 3px 2px 2px 0px #E3E3E3;
 }
 
 
@@ -288,8 +312,12 @@
 .cadastro-equip-campo h2{
     margin-bottom: 100px;
 
-    font-size: 45px;
+    
     color: white;
+    font-family: 'Georama', sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    letter-spacing: 0.05em;
 }
 
 .campo-equip{
