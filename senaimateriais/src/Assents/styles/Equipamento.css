@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Georama:wght@100;300;400;700&family=Poppins:wght@300;400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Calibri';
+
+}
+
+
+.sala{
+    height: 40vh;
+    width: 100vw;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.sala-container{
+
+    width: 90vw;
+    height: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sala-conteudo{
+    display: flex;
+    align-items: center;
+}
+
+.sala-vizual{
+
+    width: 20vw;
+    height: 15vh;
+
+    border-radius: 30px;
+    border: 1px solid #a0a0a0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+    box-shadow: 3px 2px 3px 0px #6e6e6e;
+    
+}
+
+.sala-vizual h2{
+    font-size: 30px;
+    font-weight: 600;
+    
+    
+}
+
+.sala-vizual-container{
+
+    width: 18vw;
+    
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.sala-vizual-container p{
+    font-size: 20px;
+    
+}
+
+.formulario{
+    
+    width: 70vh;
+    height: 15vh;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.sala-botao{
+    
+    width: 15vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.editar,.excluir{
+    width: 10vw;
+    height: 5vh;
+
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 600;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 4px 3px 3px 0px #E3E3E3;
+    
+}
+
+.editar{
+    background-color: black;
+    font-weight: 400;
+    font-size: 28px;
+    
+}
+
+.editar:hover{
+    background-color: #323232;
+    transition:  all ease 0.3s;
+}
+
+.excluir{
+    background-color: red;
+}
+
+.excluir:hover{
+    background-color: #d40000;
+    transition:  all ease 0.5s;
+}
+
+.sala-input{
+    
+    width: 20vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.sala-input input{
+    width: 16vw;
+    height: 3.2vh;
+
+    
+    border: 1px solid #686868;
+    border-radius: 10px;
+
+    padding-left: 15px;
+
+    font-size: 0.9em;
+
+    box-shadow: 3px 3px 3px 0px #E3E3E3;
+}
+
+.equipamentos{
+    width: 100vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.equipamento-container{
+    width: 80vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card-equipamento{
+    display: flex;
+    justify-content: space-between;
+
+    width: 60vw;
+
+    margin-top: 50px;
+}
+
+
+.equipamento{
+    background-color: #fff;
+    width: 50vw;
+    height: 17vh;
+
+    border-radius: 30px;
+    border: 1px solid #a1a1a1 ;
+    display: flex;
+    align-items: center;
+
+    box-shadow: 3px 2px 3px 0px #6e6e6e;
+}
+
+.nome{
+    width: 13vw;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nome h2{
+    font-family: 'Georama', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+}
+
+.dados-equipamento{
+    
+    height: 14vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.equi-dados1{
+    
+    width: 26vw;
+    height: 60%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+
+.equi-dados1 p{
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+.equi-dados2{
+
+    height: 5vh;
+    width: 26vw;
+    display: flex;
+    align-items: center;
+}
+
+.equi-dados2 p{
+    font-size: 20px;
+    margin-left: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+}
+
+.div-botao{
+    width: 10vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-botao{
+    width: 8vw;
+    height: 6vh;
+
+    background-color: greenyellow;
+
+    border: none;
+    border-radius: 10px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+
+    box-shadow: 3px 2px 2px 0px #E3E3E3;
+}
+
+
+.status-botao:hover{
+    color: whitesmoke;
+    transition: ease all 0.5s;
+}
+
+.botao-equip{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.eqp{
+    width: 7vw;
+}
+
+.cadastro-equip{
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+.cadastro-equip-campo{
+    width: 96%;
+    height: 100%;
+    background-color: #323232;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    border-radius: 30px;
+}
+
+.cadastro-equip-campo h2{
+    margin-bottom: 100px;
+
+    
+    color: white;
+    font-family: 'Georama', sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    letter-spacing: 0.05em;
+}
+
+.campo-equip{
+    width: 47vw;
+    height: 15vh;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+
+}
+
+.marca input,
+.numeroSerie input,
+.patrimonio input,
+.descricao input{
+
+    width: 15vw;
+    height: 40px; 
+
+    font-size: 20px;
+    padding-left: 20px;
+
+    
+    border-radius: 10px;
+    border: none;
+    box-shadow: 3px 2px 5px 0px #6e6e6e;
+}
+
+.tipoEqp select{
+    width: 14vw;
+    height: 40px; 
+
+    border-radius: 10px;
+    border: none;
+
+    padding-left: 10px;
+    box-shadow: 3px 2px 5px 0px #6e6e6e;
+
+    font-size: 17px;
+}
+
+.botao-cadastro{
+    width: 250px;
+    height: 60px;
+
+    background-color: transparent;
+
+    border-color: white;
+    border: 2px solid;
+    border-radius: 10px;
+
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+
+    margin-top: 50px;
+}
+
+.botao-cadastro:hover{
+    background-color: black;
+    border: none;
+    color: white;
+    transition: all ease 0.6s;
+}
